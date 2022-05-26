@@ -1,20 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-import Button from '~/components/Button';
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publishRoutes } from '~/routes';
+import { DefaultLayout } from '~/components/Layout';
 function App() {
   return (
-    <div className="App">
-      <Button />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {/* <Route path="/" element={<Home />}></Route>
+          <Route path="/following" element={<Following />}></Route> */}
+          {publishRoutes.map((route, index) => {
+            // Lặp qua mảng publishRoutes
+            // Layout sẽ undefine vì cta ko cấu hình gì bên index ở routes
+            // nếu mà ko có layout thì lấy thẻ chứ frag ko thì sẽ lấy DefaultLayout
+            let Layout = DefaultLayout;
+            const Page = route.component;
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
