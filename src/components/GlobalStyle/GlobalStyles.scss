@@ -1,22 +1,62 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
 
-$primary: #fe2c55;
-$black: #000;
-$white: #fff;
-$text-color: #161823;
+:root {
+  --primary: #fe2c55;
+  --black: #000;
+  --white: #fff;
+  --text-color: #161823;
+  --box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  --font-family: 'ProximaNova', sans-serif;
 
-$font-family: 'ProximaNova', sans-serif;
-
-// Default layout
-$default-layout-header-height: 60px;
-$default-layout-width: 1150px;
-$default-layout-horizontal-spacer: 24px;
-
+  // Default layout
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
+  --default-layout-horizontal-spacer: 24px;
+  // Default Layout
+  --default-layout-width: 1120px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 html {
@@ -24,10 +64,10 @@ html {
 }
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizespeed;
-  color: $text-color;
+  color: var(--text-color);
   overflow-y: overlay;
 }

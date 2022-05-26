@@ -1,0 +1,14 @@
+.wrapper {
+  height: 60px;
+  box-shadow: var(--box-shadow);
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: var(--default-layout-width);
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
