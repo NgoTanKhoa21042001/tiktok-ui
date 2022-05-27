@@ -1,0 +1,18 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --primary: rgba(254, 44, 85, 1);
+  --black: #000;
+  --white: #fff;
+  --text-color: #161823;
+  --box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  --font-family: 'ProximaNova', sans-serif;
+  --secondary: rgba(22, 24, 35, 0.34);
+  // Default layout
+  --default-layout-header-height: 60px;
+  --default-layout-horizontal-spacer: 24px;
+  --default-layout-width: 1120px;
+  // Search
+  --search-button-width: 52px;
+}
