@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 9px 16px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(22, 24, 35, 0.03);
+  }
+}
+
+// .search-title {
+//   font-size: 14px;
+//   line-height: 20px;
+//   font-weight: 600;
+//   color: var(--title);
+// }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100rem;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.info {
+}
+.name {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  // white-space: nowrap;
+}
+.check-icon {
+  margin-left: 6px;
+  font-size: 1.4rem;
+  color: rgb(32, 213, 236);
+}
+.username {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--title);
+  font-weight: 400;
+}

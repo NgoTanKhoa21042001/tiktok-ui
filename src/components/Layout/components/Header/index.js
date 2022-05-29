@@ -1,45 +1,86 @@
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import Tippy from '@tippyjs/react/headless';
+import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
+// import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleXmark,
   faSpinner,
   faMagnifyingGlass,
   faPlus,
-  faEllipsis,
-  faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Header.module.scss';
 import images from '~/assets/images/';
 // giúp cho việc viết class có dấu - đc
 const cx = classNames.bind(styles);
 
 function Header() {
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // ra 3 kết quả tìm kiếm
+      setSearchResult([1, 2, 3]);
+    }, 0);
+    // setTimeout(() => {
+    //   debugger;
+    // }, 5000);
+  }, []);
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <img src={images.logo} alt="Tiktok" />
-        <div className={cx('search')}>
-          <input placeholder="Search accounts and videos" className={cx('search-input')} spellCheck={false}></input>
-          {/* Clear */}
-          <button className={cx('clear')}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
-          {/* Loading */}
+        <div>
+          <Tippy
+            // có thể select đc
+            interactive
+            visible={searchResult.length > 0}
+            render={(attrs) => (
+              <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                <PopperWrapper>
+                  <h4 className={cx('search-title')}>Account</h4>
+                  {/* RENDER LIST */}
+                  {Array(6)
+                    .fill()
+                    .map((item, index) => (
+                      <AccountItem key={index} />
+                    ))}
+                </PopperWrapper>
+              </div>
+            )}
+          >
+            <div className={cx('search')}>
+              <input
+                placeholder="Search accounts and videos"
+                className={cx('search-input')}
+                spellCheck={false}
+              ></input>
+              {/* Clear */}
+              <button className={cx('clear')}>
+                <FontAwesomeIcon icon={faCircleXmark} />
+              </button>
+              {/* Loading */}
 
-          <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-          {/* Search */}
-          <span className={cx('line')}></span>
-          <button className={cx('search-btn')}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
+              <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+              {/* Search */}
+              <span className={cx('line')}></span>
+              <button className={cx('search-btn')}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </div>
+          </Tippy>
         </div>
-        <div className={cx('action')}>
-          <button className={cx('action-upload')}>
-            <FontAwesomeIcon className={cx('plus')} icon={faPlus} />
-            Upload
-          </button>
-          <button className={cx('action-login')}>Login</button>
-          <FontAwesomeIcon className={cx('dot')} icon={faEllipsisVertical} />
+        <div className={cx('actions')}>
+          {/* target="_blank" : mở ra tab mới */}
+          <Button upload leftIcon={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}>
+            {/* <FontAwesomeIcon icon={faPlus} className={cx('plus')}></FontAwesomeIcon> */}
+            <span className={cx('text-upload')}>Upload</span>
+          </Button>
+          <Button primary>Log in</Button>
         </div>
       </div>
     </header>

@@ -71,3 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 // GHI CHÚ
 Thuộc text-rendering CSS cung cấp thông tin cho công cụ kết xuất về những gì cần tối ưu hóa khi hiển thị văn bản.
+
+Tippy: Dùng cho dropdown, content phủ lên, dạng như popper
