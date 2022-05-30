@@ -10,14 +10,32 @@ import {
   faSpinner,
   faMagnifyingGlass,
   faPlus,
+  faEllipsisVertical,
+  faEarthAsia,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Header.module.scss';
 import images from '~/assets/images/';
+import Menu from '~/components/Popper/Menu';
+import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
 // giúp cho việc viết class có dấu - đc
 const cx = classNames.bind(styles);
-
+const MENU_ITEM = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
+    title: 'English',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
+    title: 'Feddback and Help',
+    to: '/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
+    title: 'Keyboard shortcuts',
+  },
+];
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
 
@@ -81,6 +99,12 @@ function Header() {
             <span className={cx('text-upload')}>Upload</span>
           </Button>
           <Button primary>Log in</Button>
+
+          <Menu items={MENU_ITEM}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

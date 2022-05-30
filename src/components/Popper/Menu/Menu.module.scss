@@ -1,0 +1,27 @@
+// Menu wrapper
+.menu-list {
+  min-width: 225px;
+  margin-top: -8px;
+  .menu-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+    border-radius: 0;
+    font-weight: 500;
+    background-color: transparent;
+    padding: 10px 16px;
+    cursor: pointer;
+    &:hover {
+      // background-color: #161823;
+      background-color: var(--thirdly);
+    }
+  }
+}
+
+.menu-popper {
+  padding-bottom: 5px;
+}
+
+// Menu items

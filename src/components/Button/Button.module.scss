@@ -59,7 +59,7 @@
   line-height: 24px;
   color: #161823;
   &:hover {
-    background-color: rgba(22, 24, 35, 0.03);
+    background-color: var(--thirdly);
   }
 }
 .rounded {
@@ -76,6 +76,10 @@
     border-color: rgba(22, 24, 35, 0.2);
     background-color: rgba(22, 24, 35, 0.03);
   }
+}
+.icon {
+  display: inline-block;
+  text-align: center;
 }
 // .text-upload {
 //   margin-left: 8px;
