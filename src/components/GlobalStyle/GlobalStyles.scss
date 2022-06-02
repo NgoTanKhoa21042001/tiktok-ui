@@ -11,3 +11,19 @@
   line-height: 24px;
   color: #161823;
 }
+
+// Custom tooltip
+.tippy-box {
+  border-radius: 8px;
+  background-color: rgba(84, 84, 84, 0.92);
+  line-height: 22px;
+  font-size: 1.6rem;
+}
+
+.tippy-content {
+  padding: 5px 9px;
+}
+
+.tippy-arrow {
+  background-color: rgba(84, 84, 84, 0.92);
+}

@@ -2,17 +2,19 @@ import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
 function AccountItem() {
   return (
     <div className={cx('wrapper')}>
-      <img
+      <Image
         className={cx('avatar')}
-        src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/b22305afa82a6e53438a2d27e511bb06~c5_300x300.webp?x-expires=1653872400&x-signature=hL%2Br3cw%2B3VajN5%2FJEEJN2ntTdno%3D"
+        src=""
         alt="Hoa"
-      ></img>
+        fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/57e4341880c948744268b73ab2aa0be0~c5_100x100.jpeg?x-expires=1654326000&x-signature=bYxqFSnGQkyPSHODgoVyttaKHSE%3D"
+      ></Image>
       <div className={cx('info')}>
         <p className={cx('name')}>
           <span>Ngô Tấn Khoa</span>

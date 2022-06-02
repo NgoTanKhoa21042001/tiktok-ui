@@ -1,5 +1,27 @@
-@import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+// @import 'normalize.css';
+// @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('/assets/Fonts/Proxima-Nova-Regular.woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: ProximaNova;
+  src: url('/assets/Fonts/ProximaNova-Semibold.woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: ProximaNova;
+  src: url('/assets/Fonts/sofiapro-bold.woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Sofiapro;
+  src: url('/assets/Fonts/sofiapro-bold.woff');
+  font-weight: 700;
+}
 
 :root {
   --primary: rgba(254, 44, 85, 1);

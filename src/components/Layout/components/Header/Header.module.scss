@@ -91,8 +91,30 @@
   font-size: 2rem;
   background-color: transparent;
   padding: 8px;
+  cursor: pointer;
 }
 
+.plus-icon {
+}
+
+// .action-btn {
+//   width: 24px;
+//   height: 24px;
+//   display: block;
+//   cursor: pointer;
+// }
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.current-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 // .action-upload {
 //   min-width: 110px;
 //   padding: 0 16px;
