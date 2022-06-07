@@ -45,6 +45,17 @@
   transform: translateY(-50%);
 }
 
+.loading {
+  animation: rotateLoading 1s linear infinite;
+}
+@keyframes rotateLoading {
+  from {
+    transform: translateY(-50%) rotate(0);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
 .line {
   width: 1px;
   height: 28px;

@@ -7,22 +7,45 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
+import { useDebounce } from '~/hooks';
 const cx = classNames.bind(styles);
 function Search() {
+  // hiện kết quả tìm kiếm
   const [searchResult, setSearchResult] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   // hiện khu vực tìm kiếm
   const [showResult, setShowResult] = useState(true);
+  // mặc định là false vì ban đầu ko loading
+  const [loading, setLoading] = useState(false);
+  // DEBOUNCED, ngăn ko cho APi bắn ra mỗi khi gõ
+  const debounced = useDebounce(searchValue, 500);
+  const inputRef = useRef();
   useEffect(() => {
-    setTimeout(() => {
-      // ra 3 kết quả tìm kiếm
-      setSearchResult([1, 2, 3]);
-    }, 0);
+    if (!debounced.trim()) {
+      // xóa hết kí tự thì ẩn kết quả tìm kiếm
+      setSearchResult([]);
+      return;
+    }
+    // Trước khi gọi API
+    setLoading(true);
+    fetch(
+      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        debounced,
+      )}&type=less`,
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setSearchResult(response.data);
+        // gọi API xong tắt loading
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
     // setTimeout(() => {
     //   debugger;
     // }, 5000);
-  }, []);
-  const inputRef = useRef();
+  }, [debounced]);
 
   // logic phần dấu x
   const handleClear = () => {
@@ -45,11 +68,9 @@ function Search() {
             <PopperWrapper>
               <h4 className={cx('search-title')}>Account</h4>
               {/* RENDER LIST */}
-              {Array(6)
-                .fill()
-                .map((item, index) => (
-                  <AccountItem key={index} />
-                ))}
+              {searchResult.map((result) => (
+                <AccountItem key={result.id} data={result} />
+              ))}
             </PopperWrapper>
           </div>
         )}
@@ -63,17 +84,23 @@ function Search() {
             placeholder="Search accounts and videos"
             className={cx('search-input')}
             spellCheck={false}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              // ngăn ko cho kí tự đầu là cách
+              if (searchValue.length === 0 && e.target.value.trim() === '') {
+                return;
+              }
+              setSearchValue(e.target.value);
+            }}
             onFocus={() => setShowResult(true)}
           ></input>
           {/* Clear */}
-          {!!searchValue && (
+          {!!searchValue && !loading && (
             <button className={cx('clear')} onClick={handleClear}>
               <FontAwesomeIcon icon={faCircleXmark} />
             </button>
           )}
           {/* Loading */}
-          {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+          {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
           {/* Search */}
           <span className={cx('line')}></span>
           <button className={cx('search-btn')}>
