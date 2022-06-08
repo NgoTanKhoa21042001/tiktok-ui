@@ -1,3 +1,4 @@
+import routesConfig from '~/config/routes';
 // Layouts
 import { HeaderOnly } from '~/components/Layout';
 // Pages
@@ -10,11 +11,11 @@ import Search from '~/pages/Search';
 
 const publishRoutes = [
   // Route laf object naỳ
-  { path: '/', component: Home },
-  { path: '/following', component: Following },
-  { path: '/@:nickname', component: Profile },
-  { path: '/upload', component: Upload, layout: HeaderOnly },
-  { path: '/search', component: Search, layout: null },
+  { path: routesConfig.home, component: Home },
+  { path: routesConfig.following, component: Following },
+  { path: routesConfig.profile, component: Profile },
+  { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
+  { path: routesConfig.search, component: Search, layout: null },
 ];
 
 // file này dùng mục đích là phải login mới xem dc

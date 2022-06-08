@@ -25,6 +25,7 @@
     font-size: 1.6rem;
     caret-color: var(--primary);
     background-color: transparent;
+    font-family: var(--font-family);
     // appearance: textfield;
   }
   input:not(:placeholder-shown) ~ .search-btn {

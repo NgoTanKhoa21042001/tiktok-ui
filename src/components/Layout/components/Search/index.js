@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
+import * as searchServices from '~/apiService/searchServices';
 import AccountItem from '~/components/AccountItem';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -26,22 +27,18 @@ function Search() {
       setSearchResult([]);
       return;
     }
-    // Trước khi gọi API
-    setLoading(true);
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced,
-      )}&type=less`,
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setSearchResult(response.data);
-        // gọi API xong tắt loading
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    // Đoạn Api
+    const fetchApi = async () => {
+      // trc khi gọi Apt loading là true
+      setLoading(true);
+
+      const result = await searchServices.search(debounced);
+      setSearchResult(result);
+      // sau khi gọi Apt loading là false
+
+      setLoading(false);
+    };
+    fetchApi();
     // setTimeout(() => {
     //   debugger;
     // }, 5000);
@@ -55,6 +52,16 @@ function Search() {
   };
   const handleHideResults = () => {
     setShowResult(false);
+  };
+  const handleChange = (e) => {
+    // ngăn ko cho kí tự đầu là cách
+    if (searchValue.length === 0 && e.target.value.trim() === '') {
+      return;
+    }
+    setSearchValue(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
   return (
     <div>
@@ -84,13 +91,7 @@ function Search() {
             placeholder="Search accounts and videos"
             className={cx('search-input')}
             spellCheck={false}
-            onChange={(e) => {
-              // ngăn ko cho kí tự đầu là cách
-              if (searchValue.length === 0 && e.target.value.trim() === '') {
-                return;
-              }
-              setSearchValue(e.target.value);
-            }}
+            onChange={handleChange}
             onFocus={() => setShowResult(true)}
           ></input>
           {/* Clear */}
@@ -103,7 +104,7 @@ function Search() {
           {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
           {/* Search */}
           <span className={cx('line')}></span>
-          <button className={cx('search-btn')}>
+          <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
             <SearchIcon />
           </button>
         </div>

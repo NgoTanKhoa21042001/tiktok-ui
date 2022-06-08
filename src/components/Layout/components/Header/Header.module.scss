@@ -12,7 +12,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.logo-link {
+  display: flex;
+}
 // Actions
 .actions {
   display: flex;

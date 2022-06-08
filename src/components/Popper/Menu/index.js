@@ -8,7 +8,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 const fnFunction = () => {};
-function Menu({ children, items = [], onChange = fnFunction }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = fnFunction }) {
   // render là menu item
   // useState render ra cái list item
   // Tạo lịch sử trang nọ trang kia
@@ -42,6 +42,7 @@ function Menu({ children, items = [], onChange = fnFunction }) {
       interactive
       delay={[0, 600]}
       offset={[12, 8]}
+      hideOnClick={hideOnClick}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
