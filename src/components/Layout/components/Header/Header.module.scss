@@ -1,6 +1,13 @@
 .wrapper {
+  // phần header
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 60px;
   box-shadow: var(--box-shadow);
+  background-color: var(--white);
+  z-index: 10;
 }
 
 .inner {

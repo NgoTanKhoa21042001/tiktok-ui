@@ -30,6 +30,10 @@
   padding-bottom: 5px;
 }
 
+.menu-body {
+  overflow-y: auto;
+}
+
 // Menu items
 
 // Header
@@ -40,6 +44,7 @@
   position: relative;
   height: 50px;
   margin-top: -8px;
+  flex-shrink: 0;
   cursor: pointer;
   &-title {
     font-weight: 600;
