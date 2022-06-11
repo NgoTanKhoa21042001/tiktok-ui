@@ -23,6 +23,7 @@ function AccountItem({ data }) {
   );
 }
 AccountItem.propTypes = {
-  data: PropTypes.object,
+  // kiểu data là phải object
+  data: PropTypes.object.isRequired,
 };
 export default AccountItem;

@@ -14,11 +14,13 @@ function Button({
   disabled = false,
   href,
   children,
+  className,
   leftIcon,
   onClick,
   ...passProps
 }) {
   const classes = cx('wrapper', {
+    [className]: className,
     primary,
     outline,
     small,
@@ -60,6 +62,16 @@ function Button({
 }
 
 Button.propTypes = {
-  children: PropTypes.node,
+  to: PropTypes.string,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  small: PropTypes.bool,
+  large: PropTypes.bool,
+  rounded: PropTypes.bool,
+  disabled: PropTypes.bool,
+  href: PropTypes.string,
+  // children: PropTypes.node.isRequired,
+  leftIcon: PropTypes.node,
+  onClick: PropTypes.func,
 };
 export default Button;
