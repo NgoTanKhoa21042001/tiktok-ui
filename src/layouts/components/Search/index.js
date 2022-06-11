@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import * as searchServices from '~/apiService/searchServices';
+import * as searchServices from '~/services/searchServices';
 import AccountItem from '~/components/AccountItem';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -77,6 +77,7 @@ function Search() {
               <h4 className={cx('search-title')}>Account</h4>
               {/* RENDER LIST */}
               {searchResult.map((result) => (
+                // Validate thg data phải là kiểu object vì APt trả về là phải object
                 <AccountItem key={result.id} data={result} />
               ))}
             </PopperWrapper>

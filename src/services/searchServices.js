@@ -1,9 +1,9 @@
-import * as request from '~/utils/request';
+import * as httpRequest from '~/utils/httpRequest';
 export const search = async (q, type = 'less') => {
   // Gọi Api tìm kiếm
   // await lUôn nằm trước promise
   try {
-    const res = await request.get('users/search', {
+    const res = await httpRequest.get('users/search', {
       params: {
         q,
         type,
