@@ -19,10 +19,10 @@ function Search() {
   // mặc định là false vì ban đầu ko loading
   const [loading, setLoading] = useState(false);
   // DEBOUNCED, ngăn ko cho APi bắn ra mỗi khi gõ
-  const debounced = useDebounce(searchValue, 500);
+  const debouncedValue = useDebounce(searchValue, 500);
   const inputRef = useRef();
   useEffect(() => {
-    if (!debounced.trim()) {
+    if (!debouncedValue.trim()) {
       // xóa hết kí tự thì ẩn kết quả tìm kiếm
       setSearchResult([]);
       return;
@@ -32,7 +32,7 @@ function Search() {
       // trc khi gọi Apt loading là true
       setLoading(true);
 
-      const result = await searchServices.search(debounced);
+      const result = await searchServices.search(debouncedValue);
       setSearchResult(result);
       // sau khi gọi Apt loading là false
 
@@ -42,7 +42,7 @@ function Search() {
     // setTimeout(() => {
     //   debugger;
     // }, 5000);
-  }, [debounced]);
+  }, [debouncedValue]);
 
   // logic phần dấu x
   const handleClear = () => {

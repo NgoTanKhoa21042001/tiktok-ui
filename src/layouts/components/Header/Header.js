@@ -56,7 +56,7 @@ const MENU_ITEM = [
   },
 ];
 function Header() {
-  const currentUser = true;
+  const currentUser = false;
 
   // Handle Logic
   const handleMenuChange = (menuItem) => {
@@ -120,7 +120,7 @@ function Header() {
               </Tippy>
             </div>
           ) : (
-            <div>
+            <div className={cx('button-container')}>
               <Button upload leftIcon={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}>
                 {/* <FontAwesomeIcon icon={faPlus} className={cx('plus')}></FontAwesomeIcon> */}
                 <span className={cx('text-upload')}>Upload</span>

@@ -12,10 +12,9 @@
 }
 
 .primary {
-  min-height: 36px;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   min-width: 100px;
-  padding: 7px 16px;
+  padding: 6px 16px;
   background-color: var(--primary);
   color: rgba(255, 255, 255, 1);
   &:hover {
@@ -48,15 +47,12 @@
 
 .upload {
   min-width: 110px;
-  padding: 7px 16px;
-  min-height: 40px;
+  padding: 5px 16px;
   border: 1px solid rgba(22, 24, 35, 0.12);
   border-radius: 2px;
   background-color: transparent;
-  display: flex;
-  align-items: center;
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   line-height: 24px;
   color: #161823;
   &:hover {
@@ -78,6 +74,7 @@
     background-color: rgba(22, 24, 35, 0.03);
   }
 }
+
 .icon {
   display: inline-block;
   text-align: center;
