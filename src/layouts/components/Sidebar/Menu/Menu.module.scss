@@ -1,0 +1,21 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  transition: all 0.1s ease-in-out;
+  border-radius: 4px;
+  color: var(--text-color);
+  &:hover {
+    background-color: var(--thirdly);
+  }
+  &.active {
+    color: var(--primary);
+  }
+}
+
+.menu-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  // color: var(--fourthly);
+}

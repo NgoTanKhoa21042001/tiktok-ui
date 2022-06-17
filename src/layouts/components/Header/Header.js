@@ -56,7 +56,7 @@ const MENU_ITEM = [
   },
 ];
 function Header() {
-  const currentUser = false;
+  const currentUser = true;
 
   // Handle Logic
   const handleMenuChange = (menuItem) => {
