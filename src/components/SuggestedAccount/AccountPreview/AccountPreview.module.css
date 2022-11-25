@@ -1,0 +1,48 @@
+.wrapper {
+  width: 320px;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.nickname-body {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.name-bod {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.nickname-body,
+.name-body {
+  color: rgb(22, 24, 35);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.value {
+  font-weight: 700;
+  margin-right: 6px;
+  font-size: 1.7rem;
+}
+
+.label {
+  margin-right: 12px;
+  color: rgba(22, 24, 35, 0.75);
+  font-size: 1.7rem;
+}
+
+.analytics {
+  margin-top: 8px;
+}
